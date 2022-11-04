@@ -2,6 +2,10 @@
   <h1 align="center"><a href="javascript:void(0);">vue3-vite-tsx-element-plus-admin</a></h1>
 </p>
 
+## 开发环境
+
+- node 14.21.0+
+
 ## 简介
 
 当前项目采用 vue3 + vite + element-plus + tsx + tailwindcss 构建 admin 管理员后台页面
