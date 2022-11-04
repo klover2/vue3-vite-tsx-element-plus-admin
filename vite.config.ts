@@ -51,6 +51,7 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
     base: env.VITE_USER_NODE_ENV === "development" ? "/" : "./",
     server: {
       port: 8888,
+      open: true,
     },
     css: {
       postcss: {
@@ -58,6 +59,7 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
       },
     },
     build: {
+      manifest: true,
       chunkSizeWarningLimit: 700,
       rollupOptions: {
         output: {

@@ -104,8 +104,38 @@ import "element-plus/dist/index.css";
 
 启动会在`components.d.ts`文件中导入所需要的组件
 
-### 文档
+### 注册 element-plus 所有图标
+
+1. 全局注册
+
+```ts
+import * as ElIcons from "@element-plus/icons-vue";
+
+const ElIconsData = ElIcons as unknown as Array<
+  () => Promise<typeof import("*.vue")>
+>;
+for (const iconName in ElIconsData) {
+  app.component(`i-${iconName}`, ElIconsData[iconName]); // 注意自己别名 i-
+}
+```
+
+2. 使用
+
+```ts
+<el-button type="primary" icon="i-Search">
+  Search
+</el-button>
+<el-icon size={"20"}>
+  <i-Edit />
+</el-icon>
+```
+
+## 文档
 
 [vue3 配置](https://cli.vuejs.org/config/)
 
 [tailwindcss](https://www.tailwindcss.cn/)
+
+[vite](https://cn.vitejs.dev/config/worker-options.html#worker-format)
+
+[element-plus](https://element-plus.gitee.io/zh-CN/)
