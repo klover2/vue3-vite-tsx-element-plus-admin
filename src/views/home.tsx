@@ -1,6 +1,8 @@
 import { Options, Vue } from "vue-class-component";
 import "@/styles/home.less";
 import Sidebar from "@/components/sidebar";
+import Navbar from "@/components/navbar";
+import NavbarTags from "@/components/navbar-tags";
 
 @Options({
   name: "Home",
@@ -21,12 +23,15 @@ export default class Home extends Vue {
 
         <el-container>
           {/* 顶部栏 */}
-          <el-header style="width:100%;" class="border"></el-header>
+          <el-header style="width:100%;">
+            <Navbar />
+            <NavbarTags />
+          </el-header>
 
           <el-main>
-            <el-scrollbar>
+            {/* <el-scrollbar>
               <div>amin</div>
-            </el-scrollbar>
+            </el-scrollbar> */}
           </el-main>
         </el-container>
       </el-container>
