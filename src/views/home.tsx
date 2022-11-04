@@ -23,7 +23,7 @@ export default class Home extends Vue {
 
         <el-container>
           {/* 顶部栏 */}
-          <el-header style="width:100%;">
+          <el-header style="width:100%;height:84px">
             <Navbar />
             <NavbarTags />
           </el-header>
