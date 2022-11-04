@@ -1,6 +1,7 @@
 {
   "name": "vue3-vite-tsx-element-plus-admin",
   "version": "0.1.0",
+  "description": "采用 vue3 + vite + element-plus + tsx + decorators + tailwindcss 构建 admin 管理员后台页面",
   "private": true,
   "scripts": {
     "serve": "vite --mode development",

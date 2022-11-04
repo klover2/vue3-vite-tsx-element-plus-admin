@@ -8,7 +8,7 @@
 
 ## 简介
 
-当前项目采用 vue3 + vite + element-plus + tsx + tailwindcss 构建 admin 管理员后台页面
+当前项目采用 vue3 + vite + element-plus + tsx + decorators + tailwindcss 构建 admin 管理员后台页面
 
 ## 启动
 
