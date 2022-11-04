@@ -10,6 +10,18 @@
 
 当前项目采用 vue3 + vite + element-plus + tsx + tailwindcss 构建 admin 管理员后台页面
 
+## 启动
+
+`yarn run serve`
+
+## 编译
+
+`yarn run build`
+
+## 预览编译文件
+
+`yarn run preview`
+
 ## 使用 tsx 配置 允许启用装饰器(decorators)
 
 1. 安装
