@@ -2,7 +2,7 @@ import { Options, Vue } from "vue-class-component";
 import { Prop } from "vue-property-decorator";
 
 @Options({
-  name: "Home",
+  name: "Sidebar",
 })
 export default class Sidebar extends Vue {
   @Prop({ default: false, type: Boolean })
