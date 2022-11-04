@@ -134,6 +134,12 @@ for (const iconName in ElIconsData) {
 </el-icon>
 ```
 
+## tsx 插槽使用
+
+```html
+<el-sub-menu index="2" v-slots={{ title: () => "Workspace" }}></el-sub-menu>
+```
+
 ## 文档
 
 [vue3 配置](https://cli.vuejs.org/config/)
