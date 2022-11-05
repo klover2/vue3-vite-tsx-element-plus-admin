@@ -195,8 +195,8 @@ for (const iconName in ElIconsData) {
 
 
 ## 贡献
-<a href="https://github.com/klover2/wechatpay-node-v3-ts/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=klover2/wechatpay-node-v3-ts" />
+<a href="https://github.com/klover2/vue3-vite-tsx-element-plus-admin/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=klover2/vue3-vite-tsx-element-plus-admin" />
 </a>
 
-欢迎提[存在的Bug或者意见](https://github.com/klover2/wechatpay-node-v3-ts/issues)。
+欢迎提[存在的Bug或者意见](https://github.com/klover2/vue3-vite-tsx-element-plus-admin/issues)。
