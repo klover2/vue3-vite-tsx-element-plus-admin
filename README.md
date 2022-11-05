@@ -10,6 +10,8 @@
 
 当前项目采用 vue3 + vite + element-plus + tsx + decorators + tailwindcss 构建 admin 管理员后台页面
 
+### 欢迎大家加入一起完善这个项目，让它更加完善
+
 ## demo
 
 ```ts
@@ -190,3 +192,11 @@ for (const iconName in ElIconsData) {
 [vite](https://cn.vitejs.dev/config/worker-options.html#worker-format)
 
 [element-plus](https://element-plus.gitee.io/zh-CN/)
+
+
+## 贡献
+<a href="https://github.com/klover2/wechatpay-node-v3-ts/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=klover2/wechatpay-node-v3-ts" />
+</a>
+
+欢迎提[存在的Bug或者意见](https://github.com/klover2/wechatpay-node-v3-ts/issues)。
