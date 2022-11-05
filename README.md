@@ -10,6 +10,35 @@
 
 当前项目采用 vue3 + vite + element-plus + tsx + decorators + tailwindcss 构建 admin 管理员后台页面
 
+## demo
+
+```ts
+// demo.tsx
+import { Options, Vue } from "vue-class-component";
+import { Prop } from "vue-property-decorator";
+
+@Options({
+  name: "Demo",
+})
+export default class Demo extends Vue {
+  // 父组件传参
+  @Prop({ default: false, type: Boolean })
+  private sidebarCollapse!: boolean;
+
+  /**
+   * render
+   */
+  public render(): JSX.Element {
+    const { sidebarCollapse } = this;
+    return (
+      <div>
+        <div>demo-{{ sidebarCollapse }}</div>
+      </div>
+    );
+  }
+}
+```
+
 ## 启动
 
 `yarn run serve`
