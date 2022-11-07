@@ -1,8 +1,12 @@
-import { createStore } from "vuex";
+import Vuex from "vuex";
+import { ITagsViewState } from "./modules/tags-view";
 
-export default createStore({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {},
-});
+/**
+ * vuex-module-decorators
+ * 使用文档介绍 https://championswimmer.in/vuex-module-decorators/pages/installation.html
+ */
+export interface IRootState {
+  tagsView: ITagsViewState;
+}
+
+export default new Vuex.Store<IRootState>({});

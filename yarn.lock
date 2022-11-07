@@ -9768,6 +9768,11 @@ vue@^3.0.0:
     "@vue/server-renderer" "3.2.41"
     "@vue/shared" "3.2.41"
 
+vuex-module-decorators@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/vuex-module-decorators/-/vuex-module-decorators-2.0.0.tgz#46fa63cc38496cf5655853a3193e53c1f2557ebc"
+  integrity sha512-awfjlJR9PlX2tDNzRk5fUnksO4TC5Z93Q3ZycvROCiLId7MZ1GdY4sHpEvPqm02UZ8jF+BkuyN5ezghOAk3zeQ==
+
 vuex@^4.0.0-0:
   version "4.1.0"
   resolved "https://registry.npmmirror.com/vuex/-/vuex-4.1.0.tgz#aa1b3ea5c7385812b074c86faeeec2217872e36c"
