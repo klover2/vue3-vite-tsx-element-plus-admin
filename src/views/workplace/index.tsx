@@ -1,13 +1,13 @@
 import { Options, Vue } from "vue-class-component";
 
 @Options({
-  name: "Test",
+  name: "Workplace",
 })
-export default class Test extends Vue {
+export default class Workplace extends Vue {
   /**
    * render
    */
   public render(): JSX.Element {
-    return <div>test</div>;
+    return <div>工作台</div>;
   }
 }

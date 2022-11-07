@@ -1,18 +1,58 @@
+import { h, resolveComponent } from "vue";
 import { Options, Vue } from "vue-class-component";
 import { Prop } from "vue-property-decorator";
+import {
+  RouteLocationMatched,
+  RouteRecordRaw,
+  useRoute,
+  _RouteRecordBase,
+} from "vue-router";
+interface ISidebar {
+  path: _RouteRecordBase["path"];
+  redirect: _RouteRecordBase["redirect"] | undefined;
+  name: _RouteRecordBase["name"];
+  meta: Exclude<_RouteRecordBase["meta"], void>;
+  children: RouteRecordRaw[];
+}
 
 @Options({
   name: "Sidebar",
 })
-export default class Sidebar extends Vue {
+export default class extends Vue {
   @Prop({ default: false, type: Boolean })
   private sidebarCollapse!: boolean;
+
+  // 路由
+  private routeList: ISidebar[] = [];
+
+  public created(): void {
+    const matchedList: RouteLocationMatched[] = useRoute().matched;
+    if (matchedList[0]) {
+      matchedList[0].children && this.dealSidebar(matchedList[0].children);
+    }
+  }
+
+  /**
+   * 处理侧边栏需要的数据
+   */
+  private dealSidebar(matchedList: RouteRecordRaw[]) {
+    for (const val of matchedList) {
+      if (val.meta?.hidden === false) continue;
+      this.routeList.push({
+        path: val.path || "",
+        redirect: val.redirect || "",
+        name: val.name,
+        meta: val.meta || {},
+        children: val.children || [],
+      });
+    }
+  }
 
   /**
    * render
    */
   public render(): JSX.Element {
-    const { sidebarCollapse } = this;
+    const { sidebarCollapse, routeList } = this;
     return (
       <el-scrollbar height="100%" class="bg-[#304156]">
         <el-menu
@@ -21,47 +61,59 @@ export default class Sidebar extends Vue {
           text-color="#fff"
           class="el-menu-vertical-demo"
           collapse={sidebarCollapse}
+          router={true}
         >
-          <el-sub-menu
-            index="1"
-            v-slots={{
-              title: () => (
-                <>
-                  <el-icon>
-                    <i-Location />
-                  </el-icon>
-                  <span>Navigator One</span>
-                </>
-              ),
-            }}
-          >
-            <el-menu-item index="1-1">Option 1</el-menu-item>
-            <el-menu-item index="1-2">Option 2</el-menu-item>
-            <el-menu-item index="1-3">Option 3</el-menu-item>
-            <el-sub-menu index="1-4" v-slots={{ title: () => "Option4" }}>
-              <el-menu-item index="1-4-1">Option 4-1</el-menu-item>
-            </el-sub-menu>
-          </el-sub-menu>
-          <el-sub-menu
-            index="2"
-            v-slots={{
-              title: () => (
-                <>
-                  <el-icon>
-                    <i-Location />
-                  </el-icon>
-                  <span>Navigator Two</span>
-                </>
-              ),
-            }}
-          >
-            <el-menu-item index="2-1">Option 1</el-menu-item>
-            <el-menu-item index="2-2">Option 2</el-menu-item>
-            <el-menu-item index="2-3">Option 3</el-menu-item>
-            <el-sub-menu index="2-4" v-slots={{ title: () => "Option 4" }}>
-              <el-menu-item index="2-4-1">Option 4-1</el-menu-item>
-            </el-sub-menu>
-          </el-sub-menu>
+          {routeList.map((route) =>
+            route.children.length > 0 ? (
+              <el-sub-menu
+                index={route.path}
+                v-show={route?.meta?.hidden === false ? false : true}
+                v-slots={{
+                  title: () => (
+                    <>
+                      <el-icon
+                        v-slots={{
+                          default: () =>
+                            h(
+                              resolveComponent(
+                                (route.meta.icon as string) || "i-menu"
+                              )
+                            ),
+                        }}
+                      ></el-icon>
+                      <span>{route?.meta && route?.meta.title}</span>
+                    </>
+                  ),
+                }}
+              >
+                {route.children.map((children) => (
+                  <el-menu-item
+                    index={children.path}
+                    v-show={children?.meta?.hidden === false ? false : true}
+                  >
+                    {children?.meta && children?.meta.title}
+                  </el-menu-item>
+                ))}
+              </el-sub-menu>
+            ) : (
+              <el-menu-item
+                index={route.path}
+                v-show={route?.meta?.hidden === false ? false : true}
+              >
+                <el-icon
+                  v-slots={{
+                    default: () =>
+                      h(
+                        resolveComponent(
+                          (route.meta.icon as string) || "i-menu"
+                        )
+                      ),
+                  }}
+                ></el-icon>
+                <span>{route?.meta && route?.meta.title}</span>
+              </el-menu-item>
+            )
+          )}
         </el-menu>
       </el-scrollbar>
     );

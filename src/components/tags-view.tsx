@@ -1,9 +1,9 @@
 import { Options, Vue } from "vue-class-component";
 import "@/styles/navbar-tags.less";
 @Options({
-  name: "NavbarTags",
+  name: "TagsView",
 })
-export default class NavbarTags extends Vue {
+export default class extends Vue {
   private visible = false;
   private left = 0;
   private top = 35;
@@ -131,7 +131,7 @@ export default class NavbarTags extends Vue {
                 style="margin-left: 5px;"
                 onClick={(event: MouseEvent) => closeTag(event, index)}
               >
-                <i-Close />
+                <i-close />
               </el-icon>
             </el-link>
           ))}

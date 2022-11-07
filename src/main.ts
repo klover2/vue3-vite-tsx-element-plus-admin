@@ -15,7 +15,7 @@ const ElIconsData = ElIcons as unknown as Array<
   () => Promise<typeof import("*.vue")>
 >;
 for (const iconName in ElIconsData) {
-  app.component(`i-${iconName}`, ElIconsData[iconName]);
+  app.component(`i-${iconName.toLocaleLowerCase()}`, ElIconsData[iconName]);
 }
 
 app.mount("#app");

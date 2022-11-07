@@ -2,7 +2,7 @@ import { Options, Vue } from "vue-class-component";
 import "@/styles/home.less";
 import Sidebar from "@/components/sidebar";
 import Navbar from "@/components/navbar";
-import NavbarTags from "@/components/navbar-tags";
+import TagsView from "@/components/tags-view";
 
 @Options({
   name: "Home",
@@ -24,7 +24,7 @@ export default class Home extends Vue {
           {/* 顶部栏 */}
           <el-header style="width:100%;height:84px">
             <Navbar v-model={this.sidebarCollapse} />
-            <NavbarTags />
+            <TagsView />
           </el-header>
 
           <el-main>
