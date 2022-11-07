@@ -15,23 +15,22 @@ export default class Home extends Vue {
    * render
    */
   public render(): JSX.Element {
-    const { sidebarCollapse } = this;
     return (
       <el-container class="layout-container-demo" style="height: 100%">
         {/* 侧边栏 */}
-        <Sidebar sidebar-collapse={sidebarCollapse} />
+        <Sidebar sidebar-collapse={this.sidebarCollapse} />
 
         <el-container>
           {/* 顶部栏 */}
           <el-header style="width:100%;height:84px">
-            <Navbar />
+            <Navbar v-model={this.sidebarCollapse} />
             <NavbarTags />
           </el-header>
 
           <el-main>
-            {/* <el-scrollbar>
-              <div>amin</div>
-            </el-scrollbar> */}
+            <div class="main-container">
+              <router-view />
+            </div>
           </el-main>
         </el-container>
       </el-container>

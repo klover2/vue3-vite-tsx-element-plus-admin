@@ -34,7 +34,7 @@ export default class Demo extends Vue {
     const { sidebarCollapse } = this;
     return (
       <div>
-        <div>demo-{{ sidebarCollapse }}</div>
+        <div>demo-{sidebarCollapse}</div>
       </div>
     );
   }
@@ -193,10 +193,10 @@ for (const iconName in ElIconsData) {
 
 [element-plus](https://element-plus.gitee.io/zh-CN/)
 
-
 ## 贡献
+
 <a href="https://github.com/klover2/vue3-vite-tsx-element-plus-admin/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=klover2/vue3-vite-tsx-element-plus-admin" />
 </a>
 
-欢迎提[存在的Bug或者意见](https://github.com/klover2/vue3-vite-tsx-element-plus-admin/issues)。
+欢迎提[存在的 Bug 或者意见](https://github.com/klover2/vue3-vite-tsx-element-plus-admin/issues)。
