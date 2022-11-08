@@ -1,7 +1,7 @@
 import { Options, Vue } from "vue-class-component";
 import "@/styles/login.less";
 import { reactive, ref } from "vue";
-import type { FormInstance, FormRules } from "element-plus";
+import type { FormInstance } from "element-plus";
 
 @Options({
   name: "login",

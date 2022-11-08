@@ -1,6 +1,7 @@
 import { Options, Vue } from "vue-class-component";
 import { Prop, Watch } from "vue-property-decorator";
 import { _RouteRecordBase } from "vue-router";
+import "@/styles/navbar.less";
 
 interface IBreadcrumb {
   path: _RouteRecordBase["path"];
@@ -58,10 +59,11 @@ export default class extends Vue {
     const { breadcrumbs } = this;
     return (
       <el-menu
-        class="el-menu-demo"
+        class="navbar-container"
         mode="horizontal"
         ellipsis={false}
         style="height:50px"
+        router={true}
       >
         <div
           class="el-menu-left"
@@ -93,9 +95,9 @@ export default class extends Vue {
             title: () => <img src="/img/user-avatar.gif" class="user-avatar" />,
           }}
         >
-          <el-menu-item index="2-1">item one</el-menu-item>
-          <el-menu-item index="2-2">item two</el-menu-item>
-          <el-menu-item index="2-3">item three</el-menu-item>
+          <el-menu-item index={"/login"} class="justify-center">
+            退出登录
+          </el-menu-item>
         </el-sub-menu>
       </el-menu>
     );
