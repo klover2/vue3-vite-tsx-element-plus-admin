@@ -193,6 +193,19 @@ for (const iconName in ElIconsData) {
 
 [element-plus](https://element-plus.gitee.io/zh-CN/)
 
+## 遇到的问题
+
+1. Vite2+VUE3 下引入 path 模块报错：Module "path" has been externalized for brower compatibility and cannot be accesed in client code
+
+原因是 vite 源码中设定了不允许在客户端代码中访问内置模块代码。
+
+解决方法：
+使用 `path-browserify` 代替 `path` 模块
+
+`yarn add @types/path-browserify --dev` and `yarn add path-browserify`
+
+不再使用 import path from 'path'，改为 import path from 'path-browserify'
+
 ## 贡献
 
 <a href="https://github.com/klover2/vue3-vite-tsx-element-plus-admin/graphs/contributors">

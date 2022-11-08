@@ -14,7 +14,7 @@ const routes: Array<RouteRecordRaw> = [
         name: "workplace",
         component: () =>
           import(/* webpackChunkName: "Workplace" */ "../views/workplace"),
-        meta: { hidden: true, title: "工作台", icon: "i-tools" },
+        meta: { hidden: true, title: "工作台", icon: "i-tools", affix: true },
       },
       {
         path: "/settings",
