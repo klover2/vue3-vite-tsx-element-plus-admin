@@ -81,9 +81,7 @@ export default class extends Vue {
             <el-breadcrumb-item to={{ path: "/" }}>工作台</el-breadcrumb-item>
             {breadcrumbs.map((item) => (
               <el-breadcrumb-item>
-                <a href={item.path !== "/" ? item.path : "javascript:void(0);"}>
-                  {item.title}
-                </a>
+                <router-link to={{ path: item.path }}>{item.title}</router-link>
               </el-breadcrumb-item>
             ))}
           </el-breadcrumb>

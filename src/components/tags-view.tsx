@@ -26,7 +26,6 @@ export default class extends Vue {
 
   mounted() {
     this.initTags();
-
     this.addTags();
   }
 
@@ -171,17 +170,14 @@ export default class extends Vue {
   /**
    * 刷新当前选中的标签
    */
-  private refreshSelectedTag() {
-    // TODO
-    // this.$nextTick(() => {
-    //   this.$router
-    //     .replace({
-    //       path: "/redirect" + fullPath,
-    //     })
-    //     .catch((err) => {
-    //       console.warn(err);
-    //     });
-    // });
+  private refreshSelectedTag(view: ITagView) {
+    TagsViewModule.delCachedView(view);
+    const { fullPath } = view;
+    this.$nextTick(() => {
+      this.$router.replace({
+        path: "" + fullPath,
+      });
+    });
     this.visible = false;
   }
   /**
@@ -206,23 +202,24 @@ export default class extends Vue {
       <div class="tags-view-container">
         <el-scrollbar class="tags-view-wrapper flex justify-start">
           {visitedViews.map((item) => (
-            <el-link
+            <div
               class={`tags-view-item ${isActive(item)}`}
-              href={item.path}
               onContextmenu={(event: MouseEvent) => openMenu(event, item)}
             >
-              {item.title}
-              {isAffix(item) ? (
-                ""
-              ) : (
-                <el-icon
-                  style="margin-left: 5px;"
-                  onClick={(event: MouseEvent) => closeTag(event, item)}
-                >
-                  <i-close />
-                </el-icon>
-              )}
-            </el-link>
+              <span class=" cursor-pointer">
+                <router-link to={item.path}>{item.title}</router-link>
+                {isAffix(item) ? (
+                  ""
+                ) : (
+                  <el-icon
+                    style="margin-left: 5px;"
+                    onClick={(event: MouseEvent) => closeTag(event, item)}
+                  >
+                    <i-close />
+                  </el-icon>
+                )}
+              </span>
+            </div>
           ))}
         </el-scrollbar>
         <ul
@@ -230,7 +227,7 @@ export default class extends Vue {
           class="contextmenu"
           style={`left: ${left}px;top: ${top}px;`}
         >
-          <li onClick={() => refreshSelectedTag()}>刷新</li>
+          <li onClick={() => refreshSelectedTag(this.selectedTag)}>刷新</li>
           <li onClick={() => closeCurrentTag()}>关闭</li>
           <li onClick={() => closeOtherTag()}>关闭其他</li>
           <li onClick={() => closeAllTag(this.selectedTag)}>关闭所有</li>

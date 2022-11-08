@@ -7,40 +7,40 @@ const routes: Array<RouteRecordRaw> = [
     name: "home",
     component: Home,
     redirect: "/workplace",
-    meta: { hidden: false },
+    meta: { hidden: true },
     children: [
       {
         path: "/workplace",
         name: "workplace",
         component: () =>
           import(/* webpackChunkName: "Workplace" */ "../views/workplace"),
-        meta: { hidden: true, title: "工作台", icon: "i-tools", affix: true },
+        meta: { title: "工作台", icon: "i-tools", affix: true },
       },
       {
         path: "/settings",
         name: "settings",
         component: () =>
           import(/* webpackChunkName: "Settings" */ "../views/settings"),
-        meta: { hidden: true, title: "设置", icon: "i-setting" },
+        meta: { title: "设置", icon: "i-setting" },
       },
       {
-        path: "",
+        path: "/test",
         name: "test",
-        meta: { hidden: true, title: "test" },
+        meta: { title: "test" },
         children: [
           {
             path: "/test1",
             name: "test1",
             component: () =>
               import(/* webpackChunkName: "test1" */ "../views/test/test1"),
-            meta: { hidden: true, title: "test1" },
+            meta: { title: "test1" },
           },
           {
             path: "/test2",
             name: "test2",
             component: () =>
               import(/* webpackChunkName: "test2" */ "../views/test/test2"),
-            meta: { hidden: true, title: "test2" },
+            meta: { hidden: false, title: "test2" },
           },
         ],
       },

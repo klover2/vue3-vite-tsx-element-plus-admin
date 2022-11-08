@@ -47,12 +47,76 @@ export default class extends Vue {
       });
     }
   }
+  /**
+   * 子菜单栏
+   * @param route
+   * @returns
+   */
+  private subMenu(route: ISidebar): JSX.Element {
+    return (
+      <>
+        {route?.meta?.hidden === true ? (
+          ""
+        ) : (
+          <el-sub-menu
+            index={route.path}
+            v-slots={{
+              title: () => (
+                <>
+                  <el-icon
+                    v-slots={{
+                      default: () =>
+                        h(
+                          resolveComponent(
+                            (route.meta.icon as string) || "i-menu"
+                          )
+                        ),
+                    }}
+                  ></el-icon>
+                  <span>{route?.meta && route?.meta.title}</span>
+                </>
+              ),
+            }}
+          >
+            {route.children.map((children) =>
+              children?.meta?.hidden === true ? (
+                ""
+              ) : (
+                <el-menu-item index={children.path}>
+                  {children?.meta && children?.meta.title}
+                </el-menu-item>
+              )
+            )}
+          </el-sub-menu>
+        )}
+      </>
+    );
+  }
+  private menuItem(route: ISidebar): JSX.Element {
+    return (
+      <>
+        {route?.meta?.hidden === true ? (
+          ""
+        ) : (
+          <el-menu-item index={route.path}>
+            <el-icon
+              v-slots={{
+                default: () =>
+                  h(resolveComponent((route.meta.icon as string) || "i-menu")),
+              }}
+            ></el-icon>
+            <span>{route?.meta && route?.meta.title}</span>
+          </el-menu-item>
+        )}
+      </>
+    );
+  }
 
   /**
    * render
    */
   public render(): JSX.Element {
-    const { sidebarCollapse, routeList } = this;
+    const { sidebarCollapse, routeList, subMenu, menuItem } = this;
     return (
       <el-scrollbar height="100%" class="bg-[#304156]">
         <el-menu
@@ -63,56 +127,8 @@ export default class extends Vue {
           collapse={sidebarCollapse}
           router={true}
         >
-          {routeList.map((route) =>
-            route.children.length > 0 ? (
-              <el-sub-menu
-                index={route.path}
-                v-show={route?.meta?.hidden === false ? false : true}
-                v-slots={{
-                  title: () => (
-                    <>
-                      <el-icon
-                        v-slots={{
-                          default: () =>
-                            h(
-                              resolveComponent(
-                                (route.meta.icon as string) || "i-menu"
-                              )
-                            ),
-                        }}
-                      ></el-icon>
-                      <span>{route?.meta && route?.meta.title}</span>
-                    </>
-                  ),
-                }}
-              >
-                {route.children.map((children) => (
-                  <el-menu-item
-                    index={children.path}
-                    v-show={children?.meta?.hidden === false ? false : true}
-                  >
-                    {children?.meta && children?.meta.title}
-                  </el-menu-item>
-                ))}
-              </el-sub-menu>
-            ) : (
-              <el-menu-item
-                index={route.path}
-                v-show={route?.meta?.hidden === false ? false : true}
-              >
-                <el-icon
-                  v-slots={{
-                    default: () =>
-                      h(
-                        resolveComponent(
-                          (route.meta.icon as string) || "i-menu"
-                        )
-                      ),
-                  }}
-                ></el-icon>
-                <span>{route?.meta && route?.meta.title}</span>
-              </el-menu-item>
-            )
+          {routeList.map((route: ISidebar) =>
+            route.children.length > 0 ? subMenu(route) : menuItem(route)
           )}
         </el-menu>
       </el-scrollbar>
