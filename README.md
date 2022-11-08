@@ -12,6 +12,10 @@
 
 ### 欢迎大家加入一起完善这个项目，让它更加完善
 
+## 注意
+
+1. 使用 vscode 开发需要安装格式化插件 ESLint + Prettier
+
 ## demo
 
 ```ts
@@ -162,7 +166,7 @@ const ElIconsData = ElIcons as unknown as Array<
   () => Promise<typeof import("*.vue")>
 >;
 for (const iconName in ElIconsData) {
-  app.component(`i-${iconName}`, ElIconsData[iconName]); // 注意自己别名 i-
+  app.component(`i-${iconName.toLocaleLowerCase()}`, ElIconsData[iconName]); // 注意自己别名 i-
 }
 ```
 
@@ -173,7 +177,7 @@ for (const iconName in ElIconsData) {
   Search
 </el-button>
 <el-icon size={"20"}>
-  <i-Edit />
+  <i-edit />
 </el-icon>
 ```
 
