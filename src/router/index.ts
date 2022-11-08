@@ -17,13 +17,6 @@ const routes: Array<RouteRecordRaw> = [
         meta: { title: "工作台", icon: "i-tools", affix: true },
       },
       {
-        path: "/settings",
-        name: "settings",
-        component: () =>
-          import(/* webpackChunkName: "Settings" */ "../views/settings"),
-        meta: { title: "设置", icon: "i-setting" },
-      },
-      {
         path: "/test",
         name: "test",
         meta: { title: "test" },
@@ -45,6 +38,12 @@ const routes: Array<RouteRecordRaw> = [
         ],
       },
     ],
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: () => import(/* webpackChunkName: "login" */ "../views/login"),
+    meta: { hidden: true },
   },
 ];
 
