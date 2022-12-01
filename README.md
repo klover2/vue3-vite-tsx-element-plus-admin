@@ -293,6 +293,29 @@ import { UserModule } from "@/store/modules/user";
   }
 ```
 
+## 处理刷新和热加载导致 vuex store 失效问题
+
+在app.tsx中添加
+
+```ts
+import Store from "@/store";
+
+public created(): void {
+    // 在页面加载时读取sessionStorage里的状态信息
+    const localStore = sessionStorage.getItem("store");
+    if (localStore) {
+      Store.replaceState(
+        Object.assign({}, Store.state, JSON.parse(localStore))
+      );
+    }
+
+    // 在页面刷新时将vuex里的信息保存到sessionStorage里
+    window.addEventListener("beforeunload", () => {
+      sessionStorage.setItem("store", JSON.stringify(Store.state));
+    });
+  }
+```
+
 ## 文档
 
 [vue3 配置](https://cli.vuejs.org/config/)

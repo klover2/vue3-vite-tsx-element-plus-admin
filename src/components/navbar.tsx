@@ -2,6 +2,7 @@ import { Options, Vue } from "vue-class-component";
 import { Prop, Watch } from "vue-property-decorator";
 import { _RouteRecordBase } from "vue-router";
 import "@/styles/navbar.less";
+import { UserModule } from "@/store/modules/user";
 
 interface IBreadcrumb {
   path: _RouteRecordBase["path"];
@@ -25,6 +26,10 @@ export default class extends Vue {
   @Watch("$route")
   public routeChange() {
     this.dealBreadcrumbs();
+  }
+
+  private get avatar() {
+    return UserModule.avatar;
   }
 
   /**
@@ -92,7 +97,7 @@ export default class extends Vue {
         <el-sub-menu
           index="1"
           v-slots={{
-            title: () => <img src="/img/user-avatar.gif" class="user-avatar" />,
+            title: () => <img src={this.avatar} class="user-avatar" />,
           }}
         >
           <el-menu-item index={"/login"} class="justify-center">
