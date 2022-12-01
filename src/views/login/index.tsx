@@ -24,12 +24,10 @@ export default class extends Vue {
           class="login-form"
           status-icon
         >
+          <div class="title-container">
+            <h3 class="title"> Admin 系统登录 </h3>
+          </div>
           <el-form-item prop="username">
-            <span class="svg-container">
-              <el-icon>
-                <i-user />
-              </el-icon>
-            </span>
             <el-input
               ref="username"
               v-model={ruleForm.username}
@@ -37,8 +35,26 @@ export default class extends Vue {
               name="username"
               type="text"
               tabindex="1"
+              size="large"
               autocomplete="on"
             />
+          </el-form-item>
+          <el-form-item prop="password">
+            <el-input
+              ref="password"
+              v-model={ruleForm.password}
+              placeholder="请输入账号"
+              name="password"
+              type="password"
+              tabindex="1"
+              size="large"
+              autocomplete="on"
+            />
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" size="default" class="button">
+              Create
+            </el-button>
           </el-form-item>
         </el-form>
       </div>
