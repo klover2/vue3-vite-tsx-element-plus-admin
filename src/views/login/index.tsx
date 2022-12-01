@@ -53,7 +53,7 @@ export default class extends Vue {
           </el-form-item>
           <el-form-item>
             <el-button type="primary" size="default" class="button">
-              Create
+              登录
             </el-button>
           </el-form-item>
         </el-form>
