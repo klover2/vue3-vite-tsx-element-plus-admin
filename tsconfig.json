@@ -12,7 +12,7 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "types": ["node", "webpack-env"],
+    "types": ["node", "webpack-env", "vite-plugin-svg-icons/client"],
     "paths": {
       "@/*": ["src/*"]
     },

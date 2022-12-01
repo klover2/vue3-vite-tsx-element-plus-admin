@@ -1,6 +1,6 @@
 import { Options, Vue } from "vue-class-component";
 import "@/styles/login.less";
-import { h, reactive, ref, resolveComponent } from "vue";
+import { reactive, ref } from "vue";
 import type { FormInstance } from "element-plus";
 
 @Options({
@@ -12,6 +12,12 @@ export default class extends Vue {
     username: "admin",
     password: "admin",
   });
+  // 是否隐藏密码
+  private isHidePwd = true;
+
+  private setIsHidePwd(isHidePwd: boolean) {
+    this.isHidePwd = !isHidePwd;
+  }
 
   public render(): JSX.Element {
     const { ruleFormRef, ruleForm } = this;
@@ -37,7 +43,7 @@ export default class extends Vue {
               tabindex="1"
               size="large"
               autocomplete="on"
-              prefix-icon={() => h(resolveComponent("i-user-filled"))}
+              prefix-icon={() => <svg-icon name="user" />}
             />
           </el-form-item>
           <el-form-item prop="password">
@@ -46,11 +52,17 @@ export default class extends Vue {
               v-model={ruleForm.password}
               placeholder="请输入账号"
               name="password"
-              type="password"
+              type={this.isHidePwd ? "password" : "text"}
               tabindex="1"
               size="large"
               autocomplete="on"
-              prefix-icon={() => h(resolveComponent("i-briefcase"))}
+              prefix-icon={() => <svg-icon name="password" />}
+              suffix-icon={() => (
+                <svg-icon
+                  name={this.isHidePwd ? "eye-off" : "eye-on"}
+                  onclick={() => this.setIsHidePwd(this.isHidePwd)}
+                />
+              )}
             />
           </el-form-item>
           <el-form-item>

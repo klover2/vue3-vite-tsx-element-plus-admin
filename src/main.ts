@@ -6,10 +6,12 @@ import * as ElIcons from "@element-plus/icons-vue";
 // tailwindcss 和 element-plus 放置位置  不然有样式冲突
 import "tailwindcss/tailwind.css";
 import "element-plus/dist/index.css";
+import svgIcon from "@/components/svg-icon";
 
 const app = createApp(App);
 app.use(store);
 app.use(router);
+app.use(svgIcon);
 
 const ElIconsData = ElIcons as unknown as Array<
   () => Promise<typeof import("*.vue")>

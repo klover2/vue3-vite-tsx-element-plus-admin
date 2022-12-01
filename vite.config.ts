@@ -5,6 +5,7 @@ import vueJsx from "@vitejs/plugin-vue-jsx";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
+import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 
 const setAlias = (alias: [string, string][]) =>
   alias.map((v) => {
@@ -46,6 +47,12 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
             importStyle: false,
           }),
         ],
+      }),
+      createSvgIconsPlugin({
+        // 指定需要缓存的图标文件夹
+        iconDirs: [path.resolve(process.cwd(), "src/assets/icons")],
+        // 指定symbolId格式
+        symbolId: "icon-[dir]-[name]",
       }),
     ],
     base: env.VITE_USER_NODE_ENV === "development" ? "/" : "./",

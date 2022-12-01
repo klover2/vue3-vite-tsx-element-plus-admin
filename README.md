@@ -198,6 +198,51 @@ for (const iconName in ElIconsData) {
 <el-sub-menu index="2" v-slots={{ title: () => "Workspace" }}></el-sub-menu>
 ```
 
+## 自定义图标(vite-plugin-svg-icons)
+
+1. 安装插件
+
+`yarn add vite-plugin-svg-icons -D`
+
+2. 配置 vite.config.ts
+
+```ts
+import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
+
+createSvgIconsPlugin({
+        // 指定需要缓存的图标文件夹
+        iconDirs: [path.resolve(process.cwd(), "src/assets/icons")],
+        // 指定symbolId格式
+        symbolId: "icon-[dir]-[name]",
+      }),
+```
+
+`注意`：svg 文件都放在 src/assets/icons 文件夹下
+
+3. 配置 tsconfig.json
+
+```ts
+{
+  "compilerOptions": {
+    "types": ["vite-plugin-svg-icons/client"]
+  }
+}
+```
+
+4. 封装 SvgIcon 组件
+   请看文件 src\components\svg-icon\svg-icon.tsx 和 src\components\svg-icon\index.ts
+
+5. 全局注册 main.ts
+
+```ts
+import svgIcon from "@/components/svg-icon";
+app.use(svgIcon);
+```
+
+6. 使用
+
+`<svg-icon name="user" />`
+
 ## 文档
 
 [vue3 配置](https://cli.vuejs.org/config/)
