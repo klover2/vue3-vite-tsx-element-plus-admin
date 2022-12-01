@@ -165,8 +165,19 @@ import * as ElIcons from "@element-plus/icons-vue";
 const ElIconsData = ElIcons as unknown as Array<
   () => Promise<typeof import("*.vue")>
 >;
+
+// 大写转驼峰 例如 UserFilled -> i-user-filled
 for (const iconName in ElIconsData) {
-  app.component(`i-${iconName.toLocaleLowerCase()}`, ElIconsData[iconName]); // 注意自己别名 i-
+  app.component(
+    `i-${
+      iconName.substring(0, 1).toLocaleLowerCase() +
+      iconName
+        .substring(1)
+        .replace(/([A-Z])/g, "-$1")
+        .toLowerCase()
+    }`,
+    ElIconsData[iconName]
+  );
 }
 ```
 

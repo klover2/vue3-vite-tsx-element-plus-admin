@@ -1,6 +1,6 @@
 import { Options, Vue } from "vue-class-component";
 import "@/styles/login.less";
-import { reactive, ref } from "vue";
+import { h, reactive, ref, resolveComponent } from "vue";
 import type { FormInstance } from "element-plus";
 
 @Options({
@@ -37,6 +37,7 @@ export default class extends Vue {
               tabindex="1"
               size="large"
               autocomplete="on"
+              prefix-icon={() => h(resolveComponent("i-user-filled"))}
             />
           </el-form-item>
           <el-form-item prop="password">
@@ -49,6 +50,7 @@ export default class extends Vue {
               tabindex="1"
               size="large"
               autocomplete="on"
+              prefix-icon={() => h(resolveComponent("i-briefcase"))}
             />
           </el-form-item>
           <el-form-item>
