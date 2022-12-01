@@ -2,6 +2,7 @@ import { Options, Vue } from "vue-class-component";
 import "@/styles/login.less";
 import { reactive, ref } from "vue";
 import type { FormInstance } from "element-plus";
+import { UserModule } from "@/store/modules/user";
 
 @Options({
   name: "login",
@@ -14,9 +15,19 @@ export default class extends Vue {
   });
   // 是否隐藏密码
   private isHidePwd = true;
+  private isLoading = false;
 
   private setIsHidePwd(isHidePwd: boolean) {
     this.isHidePwd = !isHidePwd;
+  }
+
+  // 登录
+  private async login() {
+    this.isLoading = true;
+    await UserModule.Login(this.ruleForm);
+    this.$router.replace({
+      path: "/",
+    });
   }
 
   public render(): JSX.Element {
@@ -66,7 +77,13 @@ export default class extends Vue {
             />
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" size="default" class="button">
+            <el-button
+              type="primary"
+              size="default"
+              class="button"
+              loading={this.isLoading}
+              onclick={() => this.login()}
+            >
               登录
             </el-button>
           </el-form-item>

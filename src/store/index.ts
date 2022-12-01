@@ -1,5 +1,6 @@
 import Vuex from "vuex";
 import { ITagsViewState } from "./modules/tags-view";
+import { IUserState } from "./modules/user";
 
 /**
  * vuex-module-decorators
@@ -7,6 +8,7 @@ import { ITagsViewState } from "./modules/tags-view";
  */
 export interface IRootState {
   tagsView: ITagsViewState;
+  user: IUserState;
 }
 
 export default new Vuex.Store<IRootState>({});
