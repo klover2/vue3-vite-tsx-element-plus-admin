@@ -14,12 +14,8 @@ router.beforeEach(
     next: NavigationGuardNext
   ) => {
     if (UserModule.token) {
-      if (to.path === "/login") {
-        next({ path: "/" });
-      } else {
-        // TODO 判断权限是否允许跳转
-        next();
-      }
+      // TODO 判断权限是否允许跳转
+      next();
     } else {
       if (whiteList.includes(to.path)) {
         next();
