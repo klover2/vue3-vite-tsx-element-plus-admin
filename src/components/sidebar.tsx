@@ -118,7 +118,11 @@ export default class extends Vue {
   public render(): JSX.Element {
     const { sidebarCollapse, routeList, subMenu, menuItem } = this;
     return (
-      <el-scrollbar height="100%" class="bg-[#304156];" style="z-index: 1001;">
+      <el-scrollbar
+        height="100%"
+        class="bg-[#304156];"
+        style="z-index: 1001;background: rgb(48, 65, 86);"
+      >
         <el-menu
           active-text-color="#ffd04b"
           background-color="rgb(48, 65, 86)"
