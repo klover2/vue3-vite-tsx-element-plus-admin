@@ -4,6 +4,7 @@ import { _RouteRecordBase } from "vue-router";
 import "@/styles/navbar.less";
 import { UserModule } from "@/store/modules/user";
 import { TagsViewModule } from "@/store/modules/tags-view";
+import LangSelect from "./lang-select";
 
 interface IBreadcrumb {
   path: _RouteRecordBase["path"];
@@ -106,9 +107,9 @@ export default class extends Vue {
           </el-breadcrumb>
         </div>
         <div class="flex-grow" />
+        <LangSelect />
         <el-dropdown
           trigger="click"
-          size="large"
           v-slots={{
             dropdown: () => (
               <el-dropdown-menu>

@@ -37,7 +37,7 @@ export default class App extends Vue {
     const { cachedViews, key } = this;
     return (
       <KeepAlive include={cachedViews}>
-        <el-config-provider size={"small"} z-index={3000}>
+        <el-config-provider size={"default"} z-index={3000}>
           <router-view key={key} />
         </el-config-provider>
       </KeepAlive>

@@ -79,7 +79,6 @@ export default class extends Vue {
           <el-form-item>
             <el-button
               type="primary"
-              size="default"
               class="button"
               loading={this.isLoading}
               onclick={() => this.login()}
