@@ -3,6 +3,7 @@ import { Prop, Watch } from "vue-property-decorator";
 import { _RouteRecordBase } from "vue-router";
 import "@/styles/navbar.less";
 import { UserModule } from "@/store/modules/user";
+import { TagsViewModule } from "@/store/modules/tags-view";
 
 interface IBreadcrumb {
   path: _RouteRecordBase["path"];
@@ -58,17 +59,28 @@ export default class extends Vue {
   }
 
   /**
+   * 退出登录
+   */
+  private logout() {
+    sessionStorage.removeItem("store");
+    TagsViewModule.delAllViews();
+    this.$router.replace({
+      path: "/login",
+    });
+  }
+
+  /**
    * render
    */
   public render(): JSX.Element {
-    const { breadcrumbs } = this;
+    const { breadcrumbs, logout } = this;
     return (
       <el-menu
         class="navbar-container"
         mode="horizontal"
         ellipsis={false}
         style="height:50px"
-        router={true}
+        router={false}
       >
         <div
           class="el-menu-left"
@@ -100,7 +112,11 @@ export default class extends Vue {
             title: () => <img src={this.avatar} class="user-avatar" />,
           }}
         >
-          <el-menu-item index={"/login"} class="justify-center">
+          <el-menu-item
+            index="logout"
+            class="justify-center"
+            onclick={() => logout()}
+          >
             退出登录
           </el-menu-item>
         </el-sub-menu>

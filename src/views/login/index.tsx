@@ -5,7 +5,7 @@ import type { FormInstance } from "element-plus";
 import { UserModule } from "@/store/modules/user";
 
 @Options({
-  name: "login",
+  name: "Login",
 })
 export default class extends Vue {
   private ruleFormRef = ref<FormInstance>();

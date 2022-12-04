@@ -17,6 +17,7 @@ export default class App extends Vue {
   public created(): void {
     // 在页面加载时读取sessionStorage里的状态信息
     const localStore = sessionStorage.getItem("store");
+
     if (localStore) {
       Store.replaceState(
         Object.assign({}, Store.state, JSON.parse(localStore))

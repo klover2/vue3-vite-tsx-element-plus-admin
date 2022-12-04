@@ -7,6 +7,7 @@ import * as ElIcons from "@element-plus/icons-vue";
 import "tailwindcss/tailwind.css";
 import "element-plus/dist/index.css";
 import svgIcon from "@/components/svg-icon";
+import "@/permission";
 
 const app = createApp(App);
 app.use(store);

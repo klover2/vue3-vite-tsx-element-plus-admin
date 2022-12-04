@@ -80,6 +80,7 @@ export default class extends Vue {
   private addTags() {
     const { name } = this.$route;
     if (name) {
+      if (name === "login") return false;
       TagsViewModule.addView(this.$route);
     }
     return false;
