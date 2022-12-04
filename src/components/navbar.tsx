@@ -106,20 +106,32 @@ export default class extends Vue {
           </el-breadcrumb>
         </div>
         <div class="flex-grow" />
-        <el-sub-menu
-          index="1"
-          v-slots={{
-            title: () => <img src={this.avatar} class="user-avatar" />,
-          }}
-        >
-          <el-menu-item
-            index="logout"
-            class="justify-center"
-            onclick={() => logout()}
+        <el-menu-item index="1">
+          <el-dropdown
+            trigger="click"
+            size="large"
+            v-slots={{
+              dropdown: () => (
+                <el-dropdown-menu>
+                  <el-dropdown-item onclick={() => logout()}>
+                    退出登录
+                  </el-dropdown-item>
+                </el-dropdown-menu>
+              ),
+            }}
           >
-            退出登录
-          </el-menu-item>
-        </el-sub-menu>
+            <span class="el-dropdown-link">
+              <img
+                src={this.avatar}
+                class="user-avatar"
+                style="display: inline-block;"
+              />
+              <el-icon size={14}>
+                <i-caret-bottom />
+              </el-icon>
+            </span>
+          </el-dropdown>
+        </el-menu-item>
       </el-menu>
     );
   }
