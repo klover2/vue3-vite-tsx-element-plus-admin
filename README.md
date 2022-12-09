@@ -369,8 +369,7 @@ private get locale() {
 ## 全屏插件 ScreenFull
 
 1. 安装
-
-`yarn add screenfull`
+   `yarn add screenfull`
 
 2. 代码参考 文件夹`src\components\screen-full\index.tsx`
 
