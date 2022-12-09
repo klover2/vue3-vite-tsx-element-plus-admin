@@ -5,6 +5,7 @@ import "@/styles/navbar.less";
 import { UserModule } from "@/store/modules/user";
 import { TagsViewModule } from "@/store/modules/tags-view";
 import LangSelect from "./lang-select";
+import ScreenFull from "./screen-full";
 
 interface IBreadcrumb {
   path: _RouteRecordBase["path"];
@@ -107,6 +108,7 @@ export default class extends Vue {
           </el-breadcrumb>
         </div>
         <div class="flex-grow" />
+        <ScreenFull />
         <LangSelect />
         <el-dropdown
           trigger="click"
