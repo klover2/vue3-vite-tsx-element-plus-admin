@@ -8,6 +8,6 @@ export default class Workplace extends Vue {
    * render
    */
   public render(): JSX.Element {
-    return <div>工作台</div>;
+    return <div>{this.$t("workplace.name")}</div>;
   }
 }

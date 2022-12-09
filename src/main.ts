@@ -8,11 +8,13 @@ import "tailwindcss/tailwind.css";
 import "element-plus/dist/index.css";
 import svgIcon from "@/components/svg-icon";
 import "@/permission";
+import i18n from "./i18n";
 
 const app = createApp(App);
 app.use(store);
 app.use(router);
 app.use(svgIcon);
+app.use(i18n);
 
 const ElIconsData = ElIcons as unknown as Array<
   () => Promise<typeof import("*.vue")>

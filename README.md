@@ -295,7 +295,7 @@ import { UserModule } from "@/store/modules/user";
 
 ## 处理刷新和热加载导致 vuex store 失效问题
 
-在app.tsx中添加
+在 app.tsx 中添加
 
 ```ts
 import Store from "@/store";
@@ -314,6 +314,56 @@ public created(): void {
       sessionStorage.setItem("store", JSON.stringify(Store.state));
     });
   }
+```
+
+## element-plus + i18n 国际化配置
+
+1. 参考文档`https://blog.csdn.net/lhz_333/article/details/125295634`
+
+2. 安装 vue-i18n 依赖
+
+`yarn add vue-i18n@next` 必须加@next 装最新包，不然会和 vite 又兼容性问题
+
+3. 代码参考 `src\i18n` 很 `src\components\lang-select` 文件夹下
+
+4. i18n 全局注册
+
+```ts
+// src\main.ts
+import i18n from "./i18n";
+app.use(i18n);
+```
+
+5. 页面使用
+
+   `<div>{this.$t("workplace.name")}</div>`
+
+6. Element-Plus 国际化配置
+
+```ts
+// src\app.tsx
+
+// 导入 Element Plus 语言包
+import zhCn from "element-plus/lib/locale/lang/zh-cn";
+import en from "element-plus/lib/locale/lang/en";
+
+// 语言
+private lang: Record<string, any> = {
+  zhCn: zhCn,
+  en: en,
+};
+
+private get language() {
+  return AppModule.language;
+}
+
+private get locale() {
+  return this.lang[this.language];
+}
+
+ <el-config-provider size={"default"} z-index={3000} locale={locale}>
+    <router-view key={key} />
+  </el-config-provider>
 ```
 
 ## 文档

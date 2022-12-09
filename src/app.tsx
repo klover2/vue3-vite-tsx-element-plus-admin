@@ -3,9 +3,27 @@ import "@/styles/app.less";
 import { TagsViewModule } from "./store/modules/tags-view";
 import { KeepAlive } from "vue";
 import Store from "@/store";
+// 导入 Element Plus 语言包
+import zhCn from "element-plus/lib/locale/lang/zh-cn";
+import en from "element-plus/lib/locale/lang/en";
+import { AppModule } from "./store/modules/app";
 
 @Options({ name: "App", components: {} })
 export default class App extends Vue {
+  // 语言
+  private lang: Record<string, any> = {
+    zhCn: zhCn,
+    en: en,
+  };
+
+  private get language() {
+    return AppModule.language;
+  }
+
+  private get locale() {
+    return this.lang[this.language];
+  }
+
   private get cachedViews() {
     return TagsViewModule.cachedViews;
   }
@@ -34,10 +52,10 @@ export default class App extends Vue {
    * render
    */
   public render(): JSX.Element {
-    const { cachedViews, key } = this;
+    const { cachedViews, key, locale } = this;
     return (
       <KeepAlive include={cachedViews}>
-        <el-config-provider size={"default"} z-index={3000}>
+        <el-config-provider size={"default"} z-index={3000} locale={locale}>
           <router-view key={key} />
         </el-config-provider>
       </KeepAlive>
