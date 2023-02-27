@@ -61,6 +61,12 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
       open: true,
     },
     css: {
+      preprocessorOptions: {
+        scss: {
+          // 自定义 element 主题样式
+          additionalData: `@use "@/styles/index.scss" as *;`,
+        },
+      },
       postcss: {
         plugins: [require("tailwindcss"), require("autoprefixer")],
       },
