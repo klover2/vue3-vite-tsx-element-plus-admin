@@ -3,9 +3,9 @@
  */
 import router from "./router";
 import { NavigationGuardNext, RouteLocationNormalized } from "vue-router";
-import { UserModule } from "./store/modules/user";
+// import { UserModule } from "./store/modules/user";
 
-const whiteList = ["/login"];
+// const whiteList = ["/login"];
 
 router.beforeEach(
   async (
