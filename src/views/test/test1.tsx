@@ -1,5 +1,6 @@
 import MyTable from "@/components/table";
 import { Options, Vue } from "vue-class-component";
+import Tinymce from "@/components/Editor/Tinymce";
 
 @Options({
   name: "Test1",
@@ -22,7 +23,8 @@ export default class Test1 extends Vue {
     const { tableData } = this;
     return (
       <div style="width: 100%">
-        <MyTable {...{ size: "large", border: true, tableData }} />
+        {/* <MyTable {...{ size: "large", border: true, tableData }} /> */}
+        <Tinymce />
       </div>
     );
   }

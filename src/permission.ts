@@ -13,16 +13,17 @@ router.beforeEach(
     from: RouteLocationNormalized,
     next: NavigationGuardNext
   ) => {
-    if (UserModule.token) {
-      // TODO 判断权限是否允许跳转
-      next();
-    } else {
-      if (whiteList.includes(to.path)) {
-        next();
-      } else {
-        next({ path: `/login` });
-      }
-    }
+    // if (UserModule.token) {
+    //   // TODO 判断权限是否允许跳转
+    //   next();
+    // } else {
+    //   if (whiteList.includes(to.path)) {
+    //     next();
+    //   } else {
+    //     next({ path: `/login` });
+    //   }
+    // }
+    next();
   }
 );
 
