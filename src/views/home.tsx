@@ -1,5 +1,5 @@
 import { Options, Vue } from "vue-class-component";
-import "@/styles/home.less";
+import "@/styles/home.scss";
 import Sidebar from "@/components/sidebar";
 import Navbar from "@/components/navbar";
 import TagsView from "@/components/tags-view";

@@ -1,5 +1,5 @@
 import { Options, Vue } from "vue-class-component";
-import "@/styles/navbar-tags.less";
+import "@/styles/navbar-tags.scss";
 import { ITagView, TagsViewModule } from "@/store/modules/tags-view";
 import { Watch } from "vue-property-decorator";
 import { RouteRecordRaw, useRoute } from "vue-router";

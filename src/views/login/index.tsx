@@ -1,5 +1,5 @@
 import { Options, Vue } from "vue-class-component";
-import "@/styles/login.less";
+import "@/styles/login.scss";
 import { reactive, ref } from "vue";
 import type { FormInstance } from "element-plus";
 import { UserModule } from "@/store/modules/user";

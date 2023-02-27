@@ -1,5 +1,5 @@
 import { Options, Vue } from "vue-class-component";
-import "@/styles/app.less";
+import "@/styles/app.scss";
 import { TagsViewModule } from "./store/modules/tags-view";
 import { KeepAlive } from "vue";
 import Store from "@/store";

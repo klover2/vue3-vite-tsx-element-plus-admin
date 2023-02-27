@@ -1,7 +1,7 @@
 import { Options, Vue } from "vue-class-component";
 import { Prop, Watch } from "vue-property-decorator";
 import { _RouteRecordBase } from "vue-router";
-import "@/styles/navbar.less";
+import "@/styles/navbar.scss";
 import { UserModule } from "@/store/modules/user";
 import { TagsViewModule } from "@/store/modules/tags-view";
 import LangSelect from "./lang-select";
